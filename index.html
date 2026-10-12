@@ -1,42 +1,497 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boshi Zhang · 张博仕 | A voyage into intelligence</title>
-<meta name="description" content="Boshi Zhang, Tsinghua University. Research in world models, embodied intelligence, efficient generative modeling, and self-evolving agents.">
-<meta property="og:title" content="Boshi Zhang — A voyage into intelligence"><meta property="og:description" content="World models · Generative models · Agentic reinforcement learning"><meta property="og:image" content="https://doczbs.github.io/assets/sea.jpg"><meta property="og:type" content="website"><meta property="og:url" content="https://doczbs.github.io/">
-<link rel="canonical" href="https://doczbs.github.io/"><link rel="icon" href="assets/compass.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=2"><script src="motion.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boshi Zhang · Tsinghua University</title>
+<meta name="description" content="Boshi Zhang, Tsinghua University. World models, efficient generative modeling and agentic robotics.">
+<meta property="og:title" content="Boshi Zhang">
+<meta property="og:description" content="Ph.D. student, Department of Automation, Tsinghua University.">
+<meta property="og:image" content="https://doczbs.github.io/assets/sea.jpg">
+<meta property="og:url" content="https://doczbs.github.io/">
+<link rel="canonical" href="https://doczbs.github.io/">
+<link rel="icon" href="assets/compass.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=IBM+Plex+Mono:wght@500&family=Noto+Serif+SC:wght@500;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<script>try{var t=localStorage.getItem('voyage-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+/* ===== Tokens — "Odyssey Ink v2 · Calm Voyage" ===== */
+:root {
+  --font-name: Cinzel, "Trajan Pro", Georgia, serif;
+  --font-head: "Cormorant Garamond", "Iowan Old Style", Georgia, "Noto Serif SC", serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, "PingFang SC", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-cjk: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --radius: 10px; --radius-sm: 6px;
+  --side: 288px; --gap: 40px;
+}
+:root, [data-theme="day"] {
+  color-scheme: light;
+  --bg: #f3f1eb; --card: #fffdf8; --tint: #e9eef3; --line: #e2dccf; --line-strong: #cdd5df;
+  --ink: #1d2733; --muted: #5a6572; --navy: #193d65; --blue: #235bb0; --red: #a8402b;
+  --gold: #d9ac55; --gold-ink: #7e5a12; --glow: #fbf8f1;
+  --chart: #193d65; --chart-red: #a8402b; --chart-op: .12;
+  --shadow: 0 1px 2px rgba(25,61,101,.05), 0 8px 24px rgba(25,61,101,.06);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="day"]) {
+  color-scheme: dark;
+  --bg: #0e1622; --card: #142033; --tint: #1b2a40; --line: #24364d; --line-strong: #2f4561;
+  --ink: #e7e3d9; --muted: #a6afba; --navy: #dce6f3; --blue: #8fb4ef; --red: #f0927a;
+  --gold: #e2bd6e; --gold-ink: #e2bd6e; --glow: #15233a;
+  --chart: #8fb4ef; --chart-red: #f0927a; --chart-op: .1;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+} }
+[data-theme="night"] {
+  color-scheme: dark;
+  --bg: #0e1622; --card: #142033; --tint: #1b2a40; --line: #24364d; --line-strong: #2f4561;
+  --ink: #e7e3d9; --muted: #a6afba; --navy: #dce6f3; --blue: #8fb4ef; --red: #f0927a;
+  --gold: #e2bd6e; --gold-ink: #e2bd6e; --glow: #15233a;
+  --chart: #8fb4ef; --chart-red: #f0927a; --chart-op: .1;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+}
+
+/* ===== Base ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: radial-gradient(ellipse 80% 60% at 30% 0%, var(--glow), transparent 70%) fixed, var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
+::selection { background: var(--gold); color: #1d2733; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 12px; top: 12px; z-index: 99; background: var(--card); padding: 6px 12px; border-radius: 6px; }
+
+/* ===== The chart: a quiet nautical map behind everything ===== */
+.chart { position: fixed; inset: 0; z-index: 0; pointer-events: none; color: var(--chart); }
+.chart svg { width: 100%; height: 100%; }
+.chart .grid { stroke: var(--chart); stroke-width: .6; opacity: calc(var(--chart-op) * .7); }
+.chart .rh1 { stroke: var(--chart-red); stroke-width: .8; opacity: calc(var(--chart-op) * 1.3); }
+.chart .rh2 { stroke: var(--chart); stroke-width: .7; opacity: var(--chart-op); }
+.chart .rh3 { stroke: var(--chart); stroke-width: .5; opacity: calc(var(--chart-op) * .7); stroke-dasharray: 4 6; }
+.chart .ring, .chart .tick { fill: none; stroke: var(--chart); stroke-width: .9; opacity: calc(var(--chart-op) * 2); }
+.chart .star1 { fill: var(--chart); opacity: calc(var(--chart-op) * 1.4); }
+.chart .star2 { fill: var(--chart-red); opacity: calc(var(--chart-op) * 1.2); }
+.chart .cardinal { fill: var(--chart); opacity: calc(var(--chart-op) * 3); font: 600 18px var(--font-name); }
+.chart .route { fill: none; stroke: var(--chart-red); stroke-width: 1.6; stroke-dasharray: 2 7; stroke-linecap: round; opacity: calc(var(--chart-op) * 4); }
+.chart .xmark { fill: none; stroke: var(--chart-red); stroke-width: 3; stroke-linecap: round; opacity: calc(var(--chart-op) * 5); }
+.chart .coast { fill: var(--chart); opacity: calc(var(--chart-op) * .3); }
+
+/* ===== Layout ===== */
+.page { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 40px 32px 0; display: grid; grid-template-columns: var(--side) minmax(0, 1fr); gap: var(--gap); align-items: start; }
+.side { position: sticky; top: 32px; }
+.main { display: grid; gap: 28px; min-width: 0; }
+
+/* ===== Sidebar profile ===== */
+.profile { text-align: center; padding: 8px 8px 0; }
+.avatar { position: relative; width: 168px; height: 168px; margin: 0 auto 18px; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid var(--card); box-shadow: var(--shadow); }
+.avatar::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 1px dashed var(--gold); }
+.name { margin: 0; font-family: var(--font-name); font-weight: 700; font-size: 25px; line-height: 1.15; letter-spacing: .06em; color: var(--navy); }
+.name-cn { margin: 4px 0 0; font-family: var(--font-cjk); font-size: 15px; letter-spacing: .4em; color: var(--muted); padding-left: .4em; }
+.tagline { margin: 14px 0 0; font-family: var(--font-head); font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.35; color: var(--navy); }
+.focus { margin: 6px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.contacts { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 6px; font-size: 14px; text-align: left; width: fit-content; margin-inline: auto; }
+.contacts li { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+.contacts svg { width: 16px; height: 16px; flex: none; stroke: var(--navy); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .8; }
+
+/* Voyage route (outline) — a small ship sails to the section you're reading */
+.route { margin-top: 26px; padding: 16px 18px 14px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); text-align: left; }
+.route__title { display: flex; justify-content: space-between; align-items: center; margin: 0 0 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.route .track { position: relative; padding-left: 26px; }
+.route ol { list-style: none; margin: 0; padding: 0; }
+.route .track::before { content: ""; position: absolute; left: 8px; top: 10px; bottom: 10px; border-left: 1.5px dashed var(--line-strong); }
+.route li a { display: flex; align-items: baseline; gap: 10px; padding: 5px 8px; border-radius: 6px; color: var(--ink); font-size: 15px; }
+.route li a:hover { background: var(--tint); text-decoration: none; }
+.route li a[aria-current="true"] { background: var(--tint); color: var(--navy); font-weight: 600; }
+.route .num { font-family: var(--font-name); font-weight: 700; font-size: 12px; color: var(--gold-ink); width: 14px; }
+.ship { position: absolute; left: -2px; top: 6px; width: 22px; height: 22px; transition: transform .45s cubic-bezier(.3,.7,.2,1); }
+.ship svg { width: 22px; height: 22px; }
+.ship .hull { fill: var(--navy); } .ship .sail { fill: var(--card); stroke: var(--navy); stroke-width: 1.2; } .ship .flag { fill: var(--red); }
+.theme { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px; padding: 2px 9px; font: 500 11px var(--font-mono); letter-spacing: .08em; cursor: pointer; }
+.theme:hover { color: var(--navy); border-color: var(--line-strong); }
+
+/* ===== Cards & headings ===== */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 30px 34px; scroll-margin-top: 24px; }
+.head { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; padding-bottom: 12px; border-bottom: 1px solid var(--line); position: relative; }
+.head::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 56px; height: 2px; background: var(--gold); }
+.head__num { display: grid; place-items: center; width: 34px; height: 34px; flex: none; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold-ink); font-family: var(--font-name); font-weight: 700; font-size: 15px; line-height: 1; }
+.head h2 { margin: 0; font-family: var(--font-head); font-weight: 700; font-size: 30px; line-height: 1.1; color: var(--navy); }
+.head__cn { margin-left: auto; font-family: var(--font-cjk); font-size: 14px; letter-spacing: .12em; color: var(--muted); }
+.sub { margin: 26px 0 12px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* ===== About ===== */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) 248px; gap: 28px; align-items: center; }
+.about p { margin: 0 0 14px; }
+.about strong { color: var(--navy); font-weight: 600; }
+.about .news { display: flex; gap: 8px; align-items: baseline; padding: 10px 14px; border-radius: var(--radius-sm); background: var(--tint); font-size: 15px; }
+.about .news b { color: var(--red); font-weight: 700; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.tag { font-size: 13px; font-weight: 600; color: var(--navy); background: var(--tint); border-radius: 999px; padding: 3px 12px; }
+.art { position: relative; margin: 0; }
+.art img { width: 100%; height: auto; }
+[data-theme="night"] .art img { filter: invert(.9) hue-rotate(180deg) brightness(1.05); mix-blend-mode: screen; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="day"]) .art img { filter: invert(.9) hue-rotate(180deg) brightness(1.05); mix-blend-mode: screen; } }
+.bubble { position: relative; display: inline-block; margin: 6px 0 14px; padding: 8px 18px; background: var(--card); border: 1.5px solid var(--navy); border-radius: 22px; font-family: var(--font-cjk); font-size: 15px; letter-spacing: .1em; color: var(--navy); }
+.bubble::before, .bubble::after { content: ""; position: absolute; top: 100%; left: 26px; }
+.bubble::before { width: 16px; height: 12px; background: var(--navy); clip-path: polygon(0 0, 100% 0, 10% 100%); }
+.bubble::after { left: 28px; width: 11px; height: 8px; margin-top: -1.5px; background: var(--card); clip-path: polygon(0 0, 100% 0, 10% 100%); }
+
+/* ===== Publications ===== */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -4px 0 18px; }
+.filters button { border: 1px solid var(--line-strong); background: transparent; color: var(--muted); border-radius: 999px; padding: 4px 14px; font: 600 13px var(--font-body); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--card); }
+.pub { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
+.pub:first-of-type { border-top: 0; padding-top: 4px; }
+.pub[hidden], .row[hidden] { display: none; }
+.thumb { display: block; aspect-ratio: 16 / 10; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; transition: transform .35s ease; }
+.thumb:hover img { transform: scale(1.03); }
+.venue { margin: 0 0 4px; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--red); }
+.venue span { color: var(--muted); font-weight: 500; }
+.pub h3, .row h3 { margin: 0 0 6px; font-size: 17px; line-height: 1.4; font-weight: 700; color: var(--navy); }
+.pub h3 a, .row h3 a { color: inherit; }
+.authors { margin: 0 0 8px; font-size: 14.5px; color: var(--muted); }
+.me { color: var(--ink); font-weight: 700; border-bottom: 2px solid var(--gold); }
+.links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; font-size: 14px; font-weight: 600; }
+.links a::before { content: "["; color: var(--muted); font-weight: 400; } .links a::after { content: "]"; color: var(--muted); font-weight: 400; }
+.role { font-size: 12px; font-weight: 600; color: var(--gold-ink); border: 1px solid var(--gold); border-radius: 999px; padding: 0 9px; }
+.rows { list-style: none; margin: 0; padding: 0; }
+.row { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px dashed var(--line); }
+.row__year { font-family: var(--font-head); font-weight: 700; font-size: 19px; color: var(--navy); line-height: 1.4; }
+.row p { margin: 0 0 6px; font-size: 14.5px; color: var(--muted); }
+.note { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+
+/* ===== Experience: ship's log ===== */
+.log { list-style: none; margin: 0; padding: 0; position: relative; }
+.log::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 14px; border-left: 1.5px dashed var(--line-strong); }
+.tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.track-col { min-width: 0; }
+.track-col .sub { margin-top: 0; }
+.log li { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 0 0 20px 30px; }
+.log li::before { content: ""; position: absolute; left: 0; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--navy); }
+.log li.now::before { background: var(--red); border-color: var(--red); }
+.log time { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+.log h3 { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 17px; color: var(--navy); }
+.org-logo { width: 24px; height: 24px; flex: none; border-radius: 50%; background: #fff; padding: 1px; }
+.log .what { font-weight: 600; font-size: 14.5px; }
+.log p { margin: 2px 0 0; font-size: 14.5px; color: var(--muted); }
+
+/* ===== Honors ===== */
+.laurels { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+.laurel { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: center; padding: 16px 18px; border-radius: var(--radius-sm); background: var(--tint); }
+.laurel svg { width: 52px; height: 52px; fill: none; stroke: var(--gold-ink); stroke-width: 1.15; stroke-linejoin: round; }
+.laurel strong { display: block; font-size: 17px; color: var(--navy); line-height: 1.3; }
+.laurel span { font-size: 13.5px; color: var(--muted); }
+.laurel b { color: var(--red); }
+.awards { list-style: none; margin: 0; padding: 0; }
+.awards li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px dashed var(--line); font-size: 15px; }
+.awards li span:last-child { flex: none; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); padding-top: 2px; }
+.awards small { color: var(--muted); font-size: 14px; }
+.awards.service-list li span:last-child { font-family: var(--font-body); font-size: 15px; color: var(--ink); padding-top: 0; flex: 1; }
+details.more { margin-top: 10px; }
+details.more summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--blue); list-style: none; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before { content: "+ "; } details.more[open] summary::before { content: "− "; }
+
+/* Service */
+.service { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; }
+.nums { display: grid; gap: 12px; }
+.nums div { padding: 12px 16px; border-left: 2px solid var(--gold); }
+.nums strong { display: block; font-family: var(--font-head); font-size: 34px; line-height: 1; color: var(--navy); }
+.nums span { font-size: 13px; color: var(--muted); }
+.roles { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.roles b { color: var(--navy); }
+.roles p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+/* ===== Life ===== */
+.card { min-width: 0; }
+.reel { position: relative; min-width: 0; max-width: 100%; }
+.reel__track { display: flex; gap: 14px; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 2px;
+  -webkit-mask: linear-gradient(90deg, #000 85%, transparent); mask: linear-gradient(90deg, #000 85%, transparent); }
+.reel__track::-webkit-scrollbar { display: none; }
+.reel__track:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.reel figure { flex: none; margin: 0; scroll-snap-align: start; }
+.reel a { display: block; border-radius: var(--radius-sm); overflow: hidden; background: var(--tint); }
+.reel img { display: block; height: 320px; width: auto; max-width: none; transition: transform .5s ease; }
+.reel a:hover img { transform: scale(1.03); }
+.reel figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.reel figcaption b { display: block; color: var(--navy); font-weight: 600; }
+.reel__nav { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.reel__btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--card); color: var(--navy); font-size: 16px; cursor: pointer; }
+.reel__btn:hover { background: var(--tint); }
+.quote { margin: 22px 0 0; text-align: center; }
+
+/* ===== Footer ===== */
+.foot { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 28px 32px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13.5px; color: var(--muted); }
+.foot .meander { flex-basis: 100%; height: 10px; opacity: .35; background: var(--navy); margin-bottom: 8px;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M0 9.5H20M3.5 9.5V1H16.5V7H8V4H12' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x left center / 20px 10px;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M0 9.5H20M3.5 9.5V1H16.5V7H8V4H12' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x left center / 20px 10px; }
+.foot .cn { font-family: var(--font-cjk); letter-spacing: .08em; }
+
+/* ===== Gentle entrance ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .js .card { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .js .card.in { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ship, .thumb img, .reel img { transition: none; } .reel__track { scroll-behavior: auto; } }
+
+/* ===== Responsive ===== */
+@media (max-width: 1080px) { .about { grid-template-columns: minmax(0, 1fr); } .art { max-width: 260px; margin: 0 auto; } }
+@media (max-width: 900px) {
+  .page { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 24px 16px 0; }
+  .side { position: static; }
+  .profile { display: grid; grid-template-columns: 130px 1fr; gap: 4px 18px; text-align: left; align-items: center; padding: 0; }
+  .avatar { width: 112px; height: 112px; margin: 9px; grid-row: span 2; }
+  .name { align-self: end; }
+  .name-cn { padding-left: 0; }
+  .tagline { margin-top: 6px; font-size: 17px; }
+  .focus { align-self: start; margin-top: 4px; }
+  .contacts { grid-column: 1 / -1; margin: 10px 0 0; grid-template-columns: 1fr 1fr; width: auto; }
+  .route { position: sticky; top: 0; z-index: 5; margin: 18px -16px 0; border-radius: 0; border-width: 0 0 1px; padding: 8px 12px; box-shadow: none; background: color-mix(in srgb, var(--card) 92%, transparent); backdrop-filter: blur(8px); }
+  .route__title { display: none; }
+  .route ol { display: flex; gap: 4px; padding: 0; overflow-x: auto; scrollbar-width: none; }
+  .route .track { padding-left: 0; }
+  .route .track::before, .ship { display: none; }
+  .route li a { white-space: nowrap; font-size: 14px; }
+  .theme-mobile { display: inline-flex !important; }
+}
+@media (max-width: 640px) {
+  .card { padding: 22px 18px; }
+  .head h2 { font-size: 25px; }
+  .head__cn { display: none; }
+  .pub { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .thumb { max-width: 420px; }
+  .tracks { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .laurels, .service { grid-template-columns: minmax(0, 1fr); }
+  .nums { grid-template-columns: 1fr 1fr; }
+  .reel img { height: 240px; }
+  .contacts { grid-template-columns: minmax(0, 1fr); }
+}
+.theme-mobile { display: none !important; }
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="masthead"><a class="wordmark" href="#home" aria-label="Boshi Zhang home"><img src="assets/compass.svg" width="32" height="32" alt=""> BZ<span class="wordmark-sub">BOSHI ZHANG</span></a><nav aria-label="Main navigation"><a href="#about">About</a><a href="#publications">Research</a><a href="#journey">Experience</a><a href="#honors">Honors</a><a href="#logbook">Life</a></nav><a class="contact-nav" href="mailto:zbs22@mails.tsinghua.edu.cn">Contact <span aria-hidden="true">↗</span></a></header>
-<main id="main">
-<section class="hero wrap" id="home" aria-labelledby="hero-title">
-<div class="hero-copy"><p class="eyebrow">TSINGHUA UNIVERSITY · BEIJING</p><h1 id="hero-title" aria-label="Boshi Zhang 张博仕">Boshi<br><span>Zhang</span><span class="name-cn" lang="zh-CN">张博仕</span></h1><p class="hero-thesis">A voyage into<br><em>intelligence.</em></p><p class="hero-intro">Building world models that imagine,<br>and agents that learn to go further.</p><a class="button primary" href="#publications">Explore my research <span aria-hidden="true">↗</span></a><div class="hero-links"><a href="https://github.com/DocZbs">GitHub ↗</a><a href="assets/boshi-zhang-cv.pdf">Curriculum vitae ↗</a></div></div>
-<div class="hero-art"><img src="assets/ascent.svg" width="720" height="730" fetchpriority="high" alt="Original blue ink illustration: a sailboat crosses the sea below a staircase rising through clouds to a Greek temple and a golden sun."><div class="art-note"><span lang="zh-CN">向未知，起航。</span><small>THE HORIZON IS JUST THE BEGINNING.</small></div></div>
-<div class="hero-bottom"><span>WORLD MODELS / GENERATIVE MODELS / AGENTIC RL</span><a href="#about">SCROLL TO EXPLORE ↓</a></div>
-</section>
-<section class="about section wrap" id="about"><div class="section-label"><span class="small-star">✦</span> ABOUT</div><div class="about-grid"><figure class="portrait"><img src="assets/portrait.jpg" width="1206" height="929" alt="Boshi Zhang at a 2026 graduate student evening event" loading="lazy"><figcaption>张博仕 · BOSHI ZHANG</figcaption></figure><div><h2>Understanding<br>from first principles.</h2><p><strong>Tsinghua Automation · B.Eng. 2026</strong><br>I study world models, efficient generation, and agents that improve through experience.</p><p class="chinese-note" lang="zh-CN">从第一性原理出发，理解世界，再去创造。</p><div class="topic-tags"><span>World models</span><span>Efficient diffusion</span><span>Agentic RL</span></div></div></div></section>
-<section class="research section wrap" id="publications"><div class="section-label"><span class="small-star">✦</span> SELECTED WORK</div><div class="section-heading"><h2>Selected publications.</h2><span class="side-note">PUBLICATIONS & RESEARCH · 2026</span></div><p class="section-intro">World models · Self-evolving agents · Safe generation</p>
-<article class="paper"><a class="paper-image" href="https://doczbs.github.io/EvoWorld/" aria-label="Visit the EvoWorld project"><img src="assets/evoworld.png" width="1400" height="800" alt="EvoWorld overview showing modular policies, world-model imagination and recursive skill evolution" loading="lazy"><span>WORLD MODELS & EMBODIED AI</span></a><div class="paper-content"><p class="venue">ECCV 2026 · POSTER <span> / FMEA @ CVPR 2026</span></p><h3><a href="https://doczbs.github.io/EvoWorld/">EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills</a></h3><p class="authors"><strong>Boshi Zhang*</strong>, Sen Cui, et al.</p><div class="paper-links"><a href="https://github.com/DocZbs/EvoWorld/raw/refs/heads/main/site/static/pdfs/evoworld.pdf">Paper ↗</a><a href="https://github.com/DocZbs/EvoWorld">Code ↗</a><a href="https://doczbs.github.io/EvoWorld/">Project ↗</a><span class="role">Co-first author</span></div></div></article>
-<article class="paper"><a class="paper-image" href="https://lab.einsia.ai/frontier-eng/" aria-label="Visit the Frontier-Eng project"><img src="assets/frontier.png" width="1400" height="800" alt="Frontier-Eng benchmark architecture connecting agent optimization with engineering tasks and verifiers" loading="lazy"><span>SELF-EVOLVING AGENTS</span></a><div class="paper-content"><p class="venue">NEURIPS 2026 · POSTER</p><h3><a href="https://arxiv.org/abs/2604.12290">Frontier-Eng: Benchmarking Self-Evolving Agents on Real-World Engineering Tasks with Generative Optimization</a></h3><p class="authors">Yizhe Chi, Deyao Hong, Dapeng Jiang, et al., including <strong>Boshi Zhang</strong></p><div class="paper-links"><a href="https://arxiv.org/abs/2604.12290">Paper ↗</a><a href="https://github.com/EinsiaLab/Frontier-Engineering">Code ↗</a><a href="https://lab.einsia.ai/frontier-eng/">Project ↗</a><span class="role">Core contributor</span></div></div></article>
-<article class="paper"><a class="paper-image" href="assets/aegisflow.pdf" aria-label="Read the AegisFlow paper"><img src="assets/aegisflow.png" width="720" height="420" alt="AegisFlow Figure 1: guided flow trajectories avoid an obstacle while approaching the target" loading="lazy"><span>PATH-SAFE FLOW MATCHING</span></a><div class="paper-content"><p class="venue">NEURIPS 2026 · POSTER</p><h3><a href="assets/aegisflow.pdf">AegisFlow: Training-free Non-myopic Path-safe Guided Flow Matching</a></h3><p class="authors">Kunpeng Liu, <strong>Boshi Zhang*</strong>, Keyou You</p><div class="paper-links"><a href="assets/aegisflow.pdf">Paper ↗</a><span class="role">Co-first author</span></div></div></article>
-<p class="publication-footnote">* Equal contribution. Conference information follows my September 2026 CV. AegisFlow PDF: author-provided manuscript.</p>
-<details class="more-work"><summary>More collaborations & ongoing work <span aria-hidden="true">+</span></summary><div class="extra-work"><article><span>2026 · BROWSER AGENTS</span><h3>Scalable Behaviour Cloning on Browser Using via Skill Distillation</h3><p>Core contributor · Learning reusable skills from browser interaction traces.</p><a href="https://arxiv.org/abs/2606.32014">Paper ↗</a> <a href="https://github.com/Einsia/Browser-BC">Code ↗</a></article><article><span>2025 · IMAGE GENERATION</span><h3>LongCat-Image</h3><p>Semantic injection and end-to-end acceleration for visual generative model training.</p><a href="https://arxiv.org/abs/2512.07584">Paper ↗</a> <a href="https://github.com/meituan-longcat/LongCat-Image">Code ↗</a></article><article><span>ONGOING · ROBOTICS</span><h3>Decoupled Whole-Body World-Action Modeling for Legged Mobile Manipulation</h3><p>Co-first, second author · Multi-view sensor collection, cleaning, and annotation for a quadruped platform.</p></article></div></details>
-</section>
-<section class="journey-band" id="journey"><div class="wrap section"><div class="section-label"><span class="small-star">✦</span> EDUCATION & EXPERIENCE</div><div class="journey-grid"><div class="journey-title"><h2>Experience.</h2><p lang="zh-CN">拾级而上，自有远方。</p></div><div class="timeline"><article><time>JUL 2026 — PRESENT</time><h3>NatureWill</h3><span>Algorithm Engineer Intern</span><p>LingBot-Video · MotuBrain · Latent actions<br>EgoData stereo pipeline: <strong>&lt; 8 mm</strong> 3D error.</p></article><article><time>MAR — JUN 2026</time><h3>Navers Lab, Einsia.AI</h3><span>Algorithm Engineer Intern</span><p>Frontier-Eng · Browser skill distillation · ProactiveAgent RL</p></article><article><time>SEP 2025 — JAN 2026</time><h3>Meituan · LongCat Image</h3><span>Algorithm Intern</span><p>Semantic injection · Generative model training acceleration</p></article><article><time>SEP 2022 — JUN 2026</time><h3>Tsinghua University</h3><span>B.Eng. · Control Science and Engineering</span><p>Department of Automation · GPA 3.9 / 4.0 · Top 10%</p></article></div></div></div></section>
-<section class="section wrap honors" id="honors" aria-labelledby="honors-title">
-<div class="honors-main"><div class="section-label">DISTINCTIONS</div><h2 id="honors-title">Honors & awards.</h2>
-<div class="featured-awards">
-<article class="award-feature"><span class="award-year">2024–25</span><span class="award-rank">Top <strong>1%</strong></span><h3>National Scholarship</h3><span class="award-caption">国家奖学金</span></article>
-<article class="award-feature"><span class="award-year">2026</span><span class="award-rank"><strong>Silver</strong></span><h3>Kaggle NeuroGolf</h3><span class="award-caption">Championship medal</span></article>
+<div class="chart" aria-hidden="true"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><path class="grid" d="M0 0V1000"/><path class="grid" d="M100 0V1000"/><path class="grid" d="M200 0V1000"/><path class="grid" d="M300 0V1000"/><path class="grid" d="M400 0V1000"/><path class="grid" d="M500 0V1000"/><path class="grid" d="M600 0V1000"/><path class="grid" d="M700 0V1000"/><path class="grid" d="M800 0V1000"/><path class="grid" d="M900 0V1000"/><path class="grid" d="M1000 0V1000"/><path class="grid" d="M1100 0V1000"/><path class="grid" d="M1200 0V1000"/><path class="grid" d="M1300 0V1000"/><path class="grid" d="M1400 0V1000"/><path class="grid" d="M1500 0V1000"/><path class="grid" d="M1600 0V1000"/><path class="grid" d="M0 0H1600"/><path class="grid" d="M0 100H1600"/><path class="grid" d="M0 200H1600"/><path class="grid" d="M0 300H1600"/><path class="grid" d="M0 400H1600"/><path class="grid" d="M0 500H1600"/><path class="grid" d="M0 600H1600"/><path class="grid" d="M0 700H1600"/><path class="grid" d="M0 800H1600"/><path class="grid" d="M0 900H1600"/><path class="grid" d="M0 1000H1600"/><path class="rh1" d="M1525 150L3725 150"/><path class="rh3" d="M1525 150L3683 579"/><path class="rh2" d="M1525 150L3558 992"/><path class="rh3" d="M1525 150L3354 1372"/><path class="rh1" d="M1525 150L3081 1706"/><path class="rh3" d="M1525 150L2747 1979"/><path class="rh2" d="M1525 150L2367 2183"/><path class="rh3" d="M1525 150L1954 2308"/><path class="rh1" d="M1525 150L1525 2350"/><path class="rh3" d="M1525 150L1096 2308"/><path class="rh2" d="M1525 150L683 2183"/><path class="rh3" d="M1525 150L303 1979"/><path class="rh1" d="M1525 150L-31 1706"/><path class="rh3" d="M1525 150L-304 1372"/><path class="rh2" d="M1525 150L-508 992"/><path class="rh3" d="M1525 150L-633 579"/><path class="rh1" d="M1525 150L-675 150"/><path class="rh3" d="M1525 150L-633 -279"/><path class="rh2" d="M1525 150L-508 -692"/><path class="rh3" d="M1525 150L-304 -1072"/><path class="rh1" d="M1525 150L-31 -1406"/><path class="rh3" d="M1525 150L303 -1679"/><path class="rh2" d="M1525 150L683 -1883"/><path class="rh3" d="M1525 150L1096 -2008"/><path class="rh1" d="M1525 150L1525 -2050"/><path class="rh3" d="M1525 150L1954 -2008"/><path class="rh2" d="M1525 150L2367 -1883"/><path class="rh3" d="M1525 150L2747 -1679"/><path class="rh1" d="M1525 150L3081 -1406"/><path class="rh3" d="M1525 150L3354 -1072"/><path class="rh2" d="M1525 150L3558 -692"/><path class="rh3" d="M1525 150L3683 -279"/><circle class="ring" cx="1525" cy="150" r="104"/><circle class="ring" cx="1525" cy="150" r="89.4"/><circle class="ring" cx="1525" cy="150" r="31.2"/><path class="tick" d="M1614.4 150.0L1629.0 150.0M1614.0 158.8L1621.3 159.5M1612.7 167.4L1627.0 170.3M1610.6 176.0L1617.6 178.1M1607.6 184.2L1621.1 189.8M1603.9 192.2L1610.3 195.6M1599.4 199.7L1611.5 207.8M1594.1 206.7L1599.8 211.4M1588.2 213.2L1598.5 223.5M1581.7 219.1L1586.4 224.8M1574.7 224.4L1582.8 236.5M1567.2 228.9L1570.6 235.3M1559.2 232.6L1564.8 246.1M1551.0 235.6L1553.1 242.6M1542.4 237.7L1545.3 252.0M1533.8 239.0L1534.5 246.3M1525.0 239.4L1525.0 254.0M1516.2 239.0L1515.5 246.3M1507.6 237.7L1504.7 252.0M1499.0 235.6L1496.9 242.6M1490.8 232.6L1485.2 246.1M1482.8 228.9L1479.4 235.3M1475.3 224.4L1467.2 236.5M1468.3 219.1L1463.6 224.8M1461.8 213.2L1451.5 223.5M1455.9 206.7L1450.2 211.4M1450.6 199.7L1438.5 207.8M1446.1 192.2L1439.7 195.6M1442.4 184.2L1428.9 189.8M1439.4 176.0L1432.4 178.1M1437.3 167.4L1423.0 170.3M1436.0 158.8L1428.7 159.5M1435.6 150.0L1421.0 150.0M1436.0 141.2L1428.7 140.5M1437.3 132.6L1423.0 129.7M1439.4 124.0L1432.4 121.9M1442.4 115.8L1428.9 110.2M1446.1 107.8L1439.7 104.4M1450.6 100.3L1438.5 92.2M1455.9 93.3L1450.2 88.6M1461.8 86.8L1451.5 76.5M1468.3 80.9L1463.6 75.2M1475.3 75.6L1467.2 63.5M1482.8 71.1L1479.4 64.7M1490.8 67.4L1485.2 53.9M1499.0 64.4L1496.9 57.4M1507.6 62.3L1504.7 48.0M1516.2 61.0L1515.5 53.7M1525.0 60.6L1525.0 46.0M1533.8 61.0L1534.5 53.7M1542.4 62.3L1545.3 48.0M1551.0 64.4L1553.1 57.4M1559.2 67.4L1564.8 53.9M1567.2 71.1L1570.6 64.7M1574.7 75.6L1582.8 63.5M1581.7 80.9L1586.4 75.2M1588.2 86.8L1598.5 76.5M1594.1 93.3L1599.8 88.6M1599.4 100.3L1611.5 92.2M1603.9 107.8L1610.3 104.4M1607.6 115.8L1621.1 110.2M1610.6 124.0L1617.6 121.9M1612.7 132.6L1627.0 129.7M1614.0 141.2L1621.3 140.5"/><polygon class="star2" points="1570.6,104.4 1537.5,150.0 1570.6,195.6 1525.0,162.5 1479.4,195.6 1512.5,150.0 1479.4,104.4 1525.0,137.5"/><polygon class="star1" points="1525.0,64.7 1535.3,139.7 1610.3,150.0 1535.3,160.3 1525.0,235.3 1514.7,160.3 1439.7,150.0 1514.7,139.7"/><text class="cardinal" x="1525" y="40" text-anchor="middle">N</text><path class="rh1" d="M118 872L2318 872"/><path class="rh3" d="M118 872L2276 1301"/><path class="rh2" d="M118 872L2151 1714"/><path class="rh3" d="M118 872L1947 2094"/><path class="rh1" d="M118 872L1674 2428"/><path class="rh3" d="M118 872L1340 2701"/><path class="rh2" d="M118 872L960 2905"/><path class="rh3" d="M118 872L547 3030"/><path class="rh1" d="M118 872L118 3072"/><path class="rh3" d="M118 872L-311 3030"/><path class="rh2" d="M118 872L-724 2905"/><path class="rh3" d="M118 872L-1104 2701"/><path class="rh1" d="M118 872L-1438 2428"/><path class="rh3" d="M118 872L-1711 2094"/><path class="rh2" d="M118 872L-1915 1714"/><path class="rh3" d="M118 872L-2040 1301"/><path class="rh1" d="M118 872L-2082 872"/><path class="rh3" d="M118 872L-2040 443"/><path class="rh2" d="M118 872L-1915 30"/><path class="rh3" d="M118 872L-1711 -350"/><path class="rh1" d="M118 872L-1438 -684"/><path class="rh3" d="M118 872L-1104 -957"/><path class="rh2" d="M118 872L-724 -1161"/><path class="rh3" d="M118 872L-311 -1286"/><path class="rh1" d="M118 872L118 -1328"/><path class="rh3" d="M118 872L547 -1286"/><path class="rh2" d="M118 872L960 -1161"/><path class="rh3" d="M118 872L1340 -957"/><path class="rh1" d="M118 872L1674 -684"/><path class="rh3" d="M118 872L1947 -350"/><path class="rh2" d="M118 872L2151 30"/><path class="rh3" d="M118 872L2276 443"/><circle class="ring" cx="118" cy="872" r="112"/><circle class="ring" cx="118" cy="872" r="96.3"/><circle class="ring" cx="118" cy="872" r="33.6"/><path class="tick" d="M214.3 872.0L230.0 872.0M213.9 881.4L221.7 882.2M212.5 890.8L227.8 893.9M210.2 900.0L217.7 902.2M207.0 908.9L221.5 914.9M202.9 917.4L209.9 921.1M198.1 925.5L211.1 934.2M192.5 933.1L198.5 938.1M186.1 940.1L197.2 951.2M179.1 946.5L184.1 952.5M171.5 952.1L180.2 965.1M163.4 956.9L167.1 963.9M154.9 961.0L160.9 975.5M146.0 964.2L148.2 971.7M136.8 966.5L139.9 981.8M127.4 967.9L128.2 975.7M118.0 968.3L118.0 984.0M108.6 967.9L107.8 975.7M99.2 966.5L96.1 981.8M90.0 964.2L87.8 971.7M81.1 961.0L75.1 975.5M72.6 956.9L68.9 963.9M64.5 952.1L55.8 965.1M56.9 946.5L51.9 952.5M49.9 940.1L38.8 951.2M43.5 933.1L37.5 938.1M37.9 925.5L24.9 934.2M33.1 917.4L26.1 921.1M29.0 908.9L14.5 914.9M25.8 900.0L18.3 902.2M23.5 890.8L8.2 893.9M22.1 881.4L14.3 882.2M21.7 872.0L6.0 872.0M22.1 862.6L14.3 861.8M23.5 853.2L8.2 850.1M25.8 844.0L18.3 841.8M29.0 835.1L14.5 829.1M33.1 826.6L26.1 822.9M37.9 818.5L24.9 809.8M43.5 810.9L37.5 805.9M49.9 803.9L38.8 792.8M56.9 797.5L51.9 791.5M64.5 791.9L55.8 778.9M72.6 787.1L68.9 780.1M81.1 783.0L75.1 768.5M90.0 779.8L87.8 772.3M99.2 777.5L96.1 762.2M108.6 776.1L107.8 768.3M118.0 775.7L118.0 760.0M127.4 776.1L128.2 768.3M136.8 777.5L139.9 762.2M146.0 779.8L148.2 772.3M154.9 783.0L160.9 768.5M163.4 787.1L167.1 780.1M171.5 791.9L180.2 778.9M179.1 797.5L184.1 791.5M186.1 803.9L197.2 792.8M192.5 810.9L198.5 805.9M198.1 818.5L211.1 809.8M202.9 826.6L209.9 822.9M207.0 835.1L221.5 829.1M210.2 844.0L217.7 841.8M212.5 853.2L227.8 850.1M213.9 862.6L221.7 861.8"/><polygon class="star2" points="167.1,822.9 131.4,872.0 167.1,921.1 118.0,885.4 68.9,921.1 104.6,872.0 68.9,822.9 118.0,858.6"/><polygon class="star1" points="118.0,780.2 129.1,860.9 209.8,872.0 129.1,883.1 118.0,963.8 106.9,883.1 26.2,872.0 106.9,860.9"/><text class="cardinal" x="118" y="753" text-anchor="middle">N</text><path class="route" d="M118 872C30 720 210 600 96 470S40 250 150 150"/><path class="route" d="M1525 150C1600 320 1450 430 1540 560S1470 760 1500 860"/><path class="xmark" d="M1488 848l24 24M1512 848l-24 24"/><path class="coast" d="M1600 690c-60 8-96 40-150 34s-70-44-130-38-80 56-140 60-96-30-150-20-60 50-110 64-90 0-120 30-40 80-30 170h730Z"/></svg></div>
+
+<div class="page">
+  <!-- ============ Sidebar ============ -->
+  <aside class="side" aria-label="Profile">
+    <div class="profile">
+      <div class="avatar"><img src="assets/avatar.jpg" width="480" height="480" alt="Boshi Zhang by the sea"></div>
+      <h1 class="name">Boshi Zhang</h1>
+      <p class="focus">Ph.D. student · Department of Automation</p>
+      <ul class="contacts">
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Tsinghua University · Beijing</li>
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:zbs22@mails.tsinghua.edu.cn">zbs22@mails.tsinghua.edu.cn</a></li>
+        <li><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.3 5.8 2.6 5.8 2.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><a href="https://github.com/DocZbs">github.com/DocZbs</a></li>
+      </ul>
+    </div>
+    <nav class="route" aria-label="Sections">
+      <p class="route__title"><span>Voyage route</span><button class="theme" type="button" data-theme-toggle aria-label="Switch colour theme">☾ Night</button></p>
+      <div class="track">
+        <span class="ship" aria-hidden="true"><svg viewBox="0 0 22 22"><path class="flag" d="M11 2.5l4 1.3-4 1.2z"/><path class="sail" d="M10.4 5.5C8.6 9 6.6 11.8 4 13.6h6.4z"/><path class="sail" d="M11.6 6.5c1.6 2.6 3.8 5 6.4 7.1h-6.4z"/><path class="hull" d="M3 15.2h16l-2.6 3.6H5.4z"/></svg></span>
+        <ol>
+        <li><a href="#about"><span class="num">Α</span>Biography</a></li>
+        <li><a href="#publications"><span class="num">Β</span>Publications</a></li>
+        <li><a href="#journey"><span class="num">Γ</span>Education &amp; Experience</a></li>
+        <li><a href="#honors"><span class="num">Δ</span>Honors &amp; Service</a></li>
+        <li><a href="#logbook"><span class="num">Ε</span>Along the Voyage</a></li>
+        <li class="theme-mobile"><button class="theme" type="button" data-theme-toggle aria-label="Switch colour theme">☾</button></li>
+        </ol>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ============ Content ============ -->
+  <main class="main" id="main">
+
+    <section class="card" id="about" aria-labelledby="t-about">
+      <div class="head"><span class="head__num" aria-hidden="true">Α</span><h2 id="t-about">Biography</h2></div>
+      <div class="about">
+        <div>
+          <p>👋 Hi, I'm <strong>Boshi Zhang</strong>, a Ph.D. student in the <strong>Department of Automation, Tsinghua University</strong> 🎓, where I also earned my B.Eng. in Control Science and Engineering.</p>
+          <p>🌍 My research centers on <strong>world models</strong>, which let machines imagine before they act, together with <strong>efficient generative modeling</strong> ⚡. Lately I'm most excited about <strong>agentic robotics</strong> 🦾, robots that plan, act and keep improving in the real world.</p>
+          <p class="news">📌 <span>EvoWorld at <b>ECCV 2026</b> · Frontier-Eng and AegisFlow at <b>NeurIPS 2026</b></span></p>
+          <div class="tags"><span class="tag">World models</span><span class="tag">Efficient diffusion</span><span class="tag">Agentic robotics</span></div>
+        </div>
+        <figure class="art"><img src="assets/ascent.svg" width="720" height="730" alt="Original blue ink illustration: a sailboat crosses the sea below a staircase rising through clouds to a Greek temple and a golden sun."></figure>
+      </div>
+    </section>
+
+    <section class="card" id="publications" aria-labelledby="t-pubs">
+      <div class="head"><span class="head__num" aria-hidden="true">Β</span><h2 id="t-pubs">Publications</h2></div>
+      <div class="filters" role="group" aria-label="Filter publications">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="first" aria-pressed="false">First &amp; co-first</button>
+        <button type="button" data-filter="collab" aria-pressed="false">Collaborations</button>
+      </div>
+
+      <article class="pub" data-kind="first">
+        <a class="thumb" href="https://doczbs.github.io/EvoWorld/" tabindex="-1" aria-hidden="true"><img src="assets/evoworld.png" width="1800" height="1022" alt="" loading="lazy"></a>
+        <div>
+          <p class="venue">ECCV 2026 <span>· Poster · also FMEA @ CVPR 2026</span></p>
+          <h3><a href="https://doczbs.github.io/EvoWorld/">EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills</a></h3>
+          <p class="authors"><span class="me">Boshi Zhang*</span>, Sen Cui, et al.</p>
+          <div class="links"><a href="https://github.com/DocZbs/EvoWorld/raw/refs/heads/main/site/static/pdfs/evoworld.pdf">Paper</a><a href="https://github.com/DocZbs/EvoWorld">Code</a><a href="https://doczbs.github.io/EvoWorld/">Project</a><span class="role">Co-first author</span></div>
+        </div>
+      </article>
+
+
+      <article class="pub" data-kind="collab">
+        <a class="thumb" href="https://lab.einsia.ai/frontier-eng/" tabindex="-1" aria-hidden="true"><img src="assets/frontier.png" width="1768" height="878" alt="" loading="lazy"></a>
+        <div>
+          <p class="venue">NeurIPS 2026 <span>· Poster</span></p>
+          <h3><a href="https://arxiv.org/abs/2604.12290">Frontier-Eng: Benchmarking Self-Evolving Agents on Real-World Engineering Tasks with Generative Optimization</a></h3>
+          <p class="authors">Yizhe Chi, Deyao Hong, Dapeng Jiang, et al., including <span class="me">Boshi Zhang</span></p>
+          <div class="links"><a href="https://arxiv.org/abs/2604.12290">Paper</a><a href="https://github.com/EinsiaLab/Frontier-Engineering">Code</a><a href="https://lab.einsia.ai/frontier-eng/">Project</a><span class="role">Core contributor</span></div>
+        </div>
+      </article>
+
+      <article class="pub" data-kind="collab">
+        <a class="thumb" href="assets/aegisflow.pdf" tabindex="-1" aria-hidden="true"><img src="assets/aegisflow.png" width="690" height="545" alt="" loading="lazy"></a>
+        <div>
+          <p class="venue">NeurIPS 2026 <span>· Poster</span></p>
+          <h3><a href="assets/aegisflow.pdf">AegisFlow: Training-free Non-myopic Path-safe Guided Flow Matching</a></h3>
+          <p class="authors">Kunpeng Liu, <span class="me">Boshi Zhang</span>, Keyou You</p>
+          <div class="links"><a href="assets/aegisflow.pdf">Paper</a></div>
+        </div>
+      </article>
+
+      <p class="sub">More work &amp; ongoing</p>
+      <ul class="rows">
+        <li class="row" data-kind="collab"><span class="row__year">2026</span><div><h3>Scalable Behaviour Cloning on Browser Using via Skill Distillation</h3><p>Core contributor · Learning reusable skills from browser interaction traces.</p><div class="links"><a href="https://arxiv.org/abs/2606.32014">Paper</a><a href="https://github.com/Einsia/Browser-BC">Code</a></div></div></li>
+        <li class="row" data-kind="collab"><span class="row__year">2025</span><div><h3>LongCat-Image</h3><p>Semantic injection and end-to-end acceleration for visual generative model training.</p><div class="links"><a href="https://arxiv.org/abs/2512.07584">Paper</a><a href="https://github.com/meituan-longcat/LongCat-Image">Code</a></div></div></li>
+      </ul>
+      <p class="note">* Equal contribution. Conference information follows my September 2026 CV.</p>
+    </section>
+
+    <section class="card" id="journey" aria-labelledby="t-exp">
+      <div class="head"><span class="head__num" aria-hidden="true">Γ</span><h2 id="t-exp">Education &amp; Experience</h2></div>
+      <div class="tracks">
+        <div class="track-col">
+          <p class="sub">Academia</p>
+          <ol class="log">
+            <li class="now"><time>2026 — Present</time><div><h3><img class="org-logo" src="assets/tsinghua.svg" width="24" height="24" alt="">Tsinghua University</h3><span class="what">Ph.D. Student</span><p>Department of Automation</p></div></li>
+            <li><time>2022 — 2026</time><div><h3><img class="org-logo" src="assets/tsinghua.svg" width="24" height="24" alt="">Tsinghua University</h3><span class="what">B.Eng. · Control Science and Engineering</span><p>Department of Automation · GPA 3.9 / 4.0 · Top 10%</p></div></li>
+          </ol>
+        </div>
+        <div class="track-col">
+          <p class="sub">Industry</p>
+          <ol class="log">
+            <li class="now"><time>Jul 2026 — Present</time><div><h3>NatureWill</h3><span class="what">Algorithm Engineer Intern</span><p>LingBot-Video · MotuBrain · Latent actions</p></div></li>
+            <li><time>Mar — Jun 2026</time><div><h3>Navers Lab, Einsia.AI</h3><span class="what">Algorithm Engineer Intern</span><p>Frontier-Eng · Browser skill distillation · ProactiveAgent RL</p></div></li>
+            <li><time>Sep 2025 — Jan 2026</time><div><h3>Meituan · LongCat Image</h3><span class="what">Algorithm Intern</span><p>Semantic injection · Generative model training acceleration</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="honors" aria-labelledby="t-hon">
+      <div class="head"><span class="head__num" aria-hidden="true">Δ</span><h2 id="t-hon">Honors &amp; Service</h2></div>
+      <div class="laurels">
+        <div class="laurel"><svg viewBox="0 0 52 52" aria-hidden="true"><path d="M24.7 42.0 L22.9 41.7 L21.0 41.3 L19.3 40.7 L17.5 39.9 L15.9 38.9 L14.4 37.8 L13.1 36.5 L11.8 35.1 L10.7 33.5 L9.8 31.9 L9.1 30.2 L8.5 28.4 L8.2 26.5 L8.0 24.6 L8.0 22.7 L8.3 20.9 L8.7 19.0 L9.3 17.3 L10.1 15.5 L11.1 13.9 L12.2 12.4 L13.5 11.1 L14.9 9.8 L16.5 8.7"/><path d="M19.3 40.7Q15.3 39.5 12.5 42.6Q16.5 43.8 19.3 40.7Z"/><path d="M19.3 40.7Q19.4 36.6 15.8 34.6Q15.6 38.8 19.3 40.7Z"/><path d="M14.4 37.8Q11.0 35.5 7.4 37.5Q10.9 39.9 14.4 37.8Z"/><path d="M14.4 37.8Q15.9 33.9 13.0 30.9Q11.6 34.8 14.4 37.8Z"/><path d="M10.7 33.5Q8.2 30.3 4.2 31.1Q6.7 34.4 10.7 33.5Z"/><path d="M10.7 33.5Q13.3 30.3 11.5 26.6Q8.9 29.8 10.7 33.5Z"/><path d="M8.5 28.4Q7.1 24.5 3.0 24.0Q4.4 27.9 8.5 28.4Z"/><path d="M8.5 28.4Q12.0 26.1 11.4 22.0Q7.9 24.3 8.5 28.4Z"/><path d="M8.0 22.7Q7.9 18.6 4.1 16.9Q4.3 21.1 8.0 22.7Z"/><path d="M8.0 22.7Q12.0 21.6 12.7 17.5Q8.8 18.7 8.0 22.7Z"/><path d="M9.3 17.3Q10.5 13.3 7.4 10.5Q6.2 14.5 9.3 17.3Z"/><path d="M9.3 17.3Q13.4 17.4 15.4 13.8Q11.2 13.6 9.3 17.3Z"/><path d="M12.2 12.4Q14.5 9.0 12.5 5.4Q10.1 8.9 12.2 12.4Z"/><path d="M12.2 12.4Q16.1 13.9 19.1 11.0Q15.2 9.6 12.2 12.4Z"/><path d="M16.5 8.7Q19.7 6.2 18.9 2.2Q15.6 4.7 16.5 8.7Z"/><path d="M16.5 8.7Q19.7 11.3 23.4 9.5Q20.2 6.9 16.5 8.7Z"/><path d="M27.3 42.0 L29.1 41.7 L31.0 41.3 L32.7 40.7 L34.5 39.9 L36.1 38.9 L37.6 37.8 L38.9 36.5 L40.2 35.1 L41.3 33.5 L42.2 31.9 L42.9 30.2 L43.5 28.4 L43.8 26.5 L44.0 24.6 L44.0 22.7 L43.7 20.9 L43.3 19.0 L42.7 17.3 L41.9 15.5 L40.9 13.9 L39.8 12.4 L38.5 11.1 L37.1 9.8 L35.5 8.7"/><path d="M32.7 40.7Q36.4 38.8 36.2 34.6Q32.6 36.6 32.7 40.7Z"/><path d="M32.7 40.7Q35.5 43.8 39.5 42.6Q36.7 39.5 32.7 40.7Z"/><path d="M37.6 37.8Q40.4 34.8 39.0 30.9Q36.1 33.9 37.6 37.8Z"/><path d="M37.6 37.8Q41.1 39.9 44.6 37.5Q41.0 35.5 37.6 37.8Z"/><path d="M41.3 33.5Q43.1 29.8 40.5 26.6Q38.7 30.3 41.3 33.5Z"/><path d="M41.3 33.5Q45.3 34.4 47.8 31.1Q43.8 30.3 41.3 33.5Z"/><path d="M43.5 28.4Q44.1 24.3 40.6 22.0Q40.0 26.1 43.5 28.4Z"/><path d="M43.5 28.4Q47.6 27.9 49.0 24.0Q44.9 24.5 43.5 28.4Z"/><path d="M44.0 22.7Q43.2 18.7 39.3 17.5Q40.0 21.6 44.0 22.7Z"/><path d="M44.0 22.7Q47.7 21.1 47.9 16.9Q44.1 18.6 44.0 22.7Z"/><path d="M42.7 17.3Q40.8 13.6 36.6 13.8Q38.6 17.4 42.7 17.3Z"/><path d="M42.7 17.3Q45.8 14.5 44.6 10.5Q41.5 13.3 42.7 17.3Z"/><path d="M39.8 12.4Q36.8 9.6 32.9 11.0Q35.9 13.9 39.8 12.4Z"/><path d="M39.8 12.4Q41.9 8.9 39.5 5.4Q37.5 9.0 39.8 12.4Z"/><path d="M35.5 8.7Q31.8 6.9 28.6 9.5Q32.3 11.3 35.5 8.7Z"/><path d="M35.5 8.7Q36.4 4.7 33.1 2.2Q32.3 6.2 35.5 8.7Z"/></svg><div><strong>National Scholarship</strong><span>2024–25 · <b>Top 1% nationally</b></span></div></div>
+        <div class="laurel"><svg viewBox="0 0 52 52" aria-hidden="true"><path d="M24.7 42.0 L22.9 41.7 L21.0 41.3 L19.3 40.7 L17.5 39.9 L15.9 38.9 L14.4 37.8 L13.1 36.5 L11.8 35.1 L10.7 33.5 L9.8 31.9 L9.1 30.2 L8.5 28.4 L8.2 26.5 L8.0 24.6 L8.0 22.7 L8.3 20.9 L8.7 19.0 L9.3 17.3 L10.1 15.5 L11.1 13.9 L12.2 12.4 L13.5 11.1 L14.9 9.8 L16.5 8.7"/><path d="M19.3 40.7Q15.3 39.5 12.5 42.6Q16.5 43.8 19.3 40.7Z"/><path d="M19.3 40.7Q19.4 36.6 15.8 34.6Q15.6 38.8 19.3 40.7Z"/><path d="M14.4 37.8Q11.0 35.5 7.4 37.5Q10.9 39.9 14.4 37.8Z"/><path d="M14.4 37.8Q15.9 33.9 13.0 30.9Q11.6 34.8 14.4 37.8Z"/><path d="M10.7 33.5Q8.2 30.3 4.2 31.1Q6.7 34.4 10.7 33.5Z"/><path d="M10.7 33.5Q13.3 30.3 11.5 26.6Q8.9 29.8 10.7 33.5Z"/><path d="M8.5 28.4Q7.1 24.5 3.0 24.0Q4.4 27.9 8.5 28.4Z"/><path d="M8.5 28.4Q12.0 26.1 11.4 22.0Q7.9 24.3 8.5 28.4Z"/><path d="M8.0 22.7Q7.9 18.6 4.1 16.9Q4.3 21.1 8.0 22.7Z"/><path d="M8.0 22.7Q12.0 21.6 12.7 17.5Q8.8 18.7 8.0 22.7Z"/><path d="M9.3 17.3Q10.5 13.3 7.4 10.5Q6.2 14.5 9.3 17.3Z"/><path d="M9.3 17.3Q13.4 17.4 15.4 13.8Q11.2 13.6 9.3 17.3Z"/><path d="M12.2 12.4Q14.5 9.0 12.5 5.4Q10.1 8.9 12.2 12.4Z"/><path d="M12.2 12.4Q16.1 13.9 19.1 11.0Q15.2 9.6 12.2 12.4Z"/><path d="M16.5 8.7Q19.7 6.2 18.9 2.2Q15.6 4.7 16.5 8.7Z"/><path d="M16.5 8.7Q19.7 11.3 23.4 9.5Q20.2 6.9 16.5 8.7Z"/><path d="M27.3 42.0 L29.1 41.7 L31.0 41.3 L32.7 40.7 L34.5 39.9 L36.1 38.9 L37.6 37.8 L38.9 36.5 L40.2 35.1 L41.3 33.5 L42.2 31.9 L42.9 30.2 L43.5 28.4 L43.8 26.5 L44.0 24.6 L44.0 22.7 L43.7 20.9 L43.3 19.0 L42.7 17.3 L41.9 15.5 L40.9 13.9 L39.8 12.4 L38.5 11.1 L37.1 9.8 L35.5 8.7"/><path d="M32.7 40.7Q36.4 38.8 36.2 34.6Q32.6 36.6 32.7 40.7Z"/><path d="M32.7 40.7Q35.5 43.8 39.5 42.6Q36.7 39.5 32.7 40.7Z"/><path d="M37.6 37.8Q40.4 34.8 39.0 30.9Q36.1 33.9 37.6 37.8Z"/><path d="M37.6 37.8Q41.1 39.9 44.6 37.5Q41.0 35.5 37.6 37.8Z"/><path d="M41.3 33.5Q43.1 29.8 40.5 26.6Q38.7 30.3 41.3 33.5Z"/><path d="M41.3 33.5Q45.3 34.4 47.8 31.1Q43.8 30.3 41.3 33.5Z"/><path d="M43.5 28.4Q44.1 24.3 40.6 22.0Q40.0 26.1 43.5 28.4Z"/><path d="M43.5 28.4Q47.6 27.9 49.0 24.0Q44.9 24.5 43.5 28.4Z"/><path d="M44.0 22.7Q43.2 18.7 39.3 17.5Q40.0 21.6 44.0 22.7Z"/><path d="M44.0 22.7Q47.7 21.1 47.9 16.9Q44.1 18.6 44.0 22.7Z"/><path d="M42.7 17.3Q40.8 13.6 36.6 13.8Q38.6 17.4 42.7 17.3Z"/><path d="M42.7 17.3Q45.8 14.5 44.6 10.5Q41.5 13.3 42.7 17.3Z"/><path d="M39.8 12.4Q36.8 9.6 32.9 11.0Q35.9 13.9 39.8 12.4Z"/><path d="M39.8 12.4Q41.9 8.9 39.5 5.4Q37.5 9.0 39.8 12.4Z"/><path d="M35.5 8.7Q31.8 6.9 28.6 9.5Q32.3 11.3 35.5 8.7Z"/><path d="M35.5 8.7Q36.4 4.7 33.1 2.2Q32.3 6.2 35.5 8.7Z"/></svg><div><strong>Outstanding Graduate</strong><span>Beijing Municipality &amp; Tsinghua University · <b>2026</b></span></div></div>
+      </div>
+      <ul class="awards">
+        <li><span><b>Tsinghua Agent Competition</b> <small>· First prize</small></span><span>3 / 118</span></li>
+        <li><span><b>Tsinghua AI Challenge</b> <small>· Second prize</small></span><span>4 / 66</span></li>
+      </ul>
+      <details class="more"><summary>Earlier awards</summary>
+        <ul class="awards">
+          <li><span>Automation Electronic System Design Competition <small>· Champion</small></span><span>2024</span></li>
+          <li><span>National College Physics Competition <small>· First prize</small></span><span>2023–24</span></li>
+          <li><span>First-Class Scholarship <small>· Tsinghua</small></span><span>2022–24</span></li>
+          <li><span>National Encouragement Scholarship</span><span>2022–23</span></li>
+          <li><span>Chinese Mathematical Olympiad <small>· Provincial first prize</small></span><span>2021–22</span></li>
+        </ul>
+      </details>
+      <p class="sub">Service &amp; teaching</p>
+      <ul class="awards service-list">
+        <li><span><b>Reviewer</b> <small>· ICLR 2027</small></span></li>
+        <li><span><b>Chair</b> <small>· Student Science &amp; Technology Association, Tsinghua Automation</small></span></li>
+        <li><span><b>Instructor</b> <small>· Learning Development Center, Tsinghua</small></span></li>
+      </ul>
+    </section>
+
+    <section class="card" id="logbook" aria-labelledby="t-life">
+      <div class="head"><span class="head__num" aria-hidden="true">Ε</span><h2 id="t-life">Along the Voyage</h2></div>
+      <div class="reel" aria-roledescription="carousel" aria-label="Photos">
+        <div class="reel__track" tabindex="0">
+          <figure><a href="assets/portrait.jpg"><img src="assets/portrait.jpg" width="1206" height="929" alt="Boshi on stage at the 2026 graduate welcome gala" loading="lazy" style="object-position:50% 50%"></a><figcaption><b>Graduate welcome gala</b>On stage, 2026</figcaption></figure>
+          <figure><a href="assets/sea.jpg"><img src="assets/sea.jpg" width="1024" height="1536" alt="Boshi standing on a rocky shore with a long bridge crossing the sea" loading="lazy" style="object-position:50% 50%"></a><figcaption><b>By the sea</b>A wider horizon</figcaption></figure>
+          <figure><a href="assets/basketball.jpg"><img src="assets/basketball.jpg" width="1080" height="990" alt="Boshi holding the champion trophy on an outdoor basketball court at Tsinghua" loading="lazy" style="object-position:50% 50%"></a><figcaption><b>Basketball All-Star Champion</b>Tsinghua University</figcaption></figure>
+          <figure><a href="assets/conference.jpg"><img src="assets/conference.jpg" width="1448" height="1086" alt="Boshi presenting the EvoWorld research poster at a conference" loading="lazy" style="object-position:50% 50%"></a><figcaption><b>Ideas meet the world</b>EvoWorld · poster session</figcaption></figure>
+          <figure><a href="assets/nobel.jpg"><img src="assets/nobel.jpg" width="1440" height="2564" alt="Boshi beside a large gold Nobel medal at the Nobel Prize Museum" loading="lazy" style="object-position:50% 50%"></a><figcaption><b>Nobel Prize Museum</b>A moment of inspiration</figcaption></figure>
+        </div>
+        <div class="reel__nav"><button type="button" class="reel__btn" data-dir="-1" aria-label="Previous photo">←</button><button type="button" class="reel__btn" data-dir="1" aria-label="Next photo">→</button></div>
+      </div>
+    </section>
+  </main>
 </div>
-<ul class="award-list"><li><span><strong>Outstanding Graduate</strong><small>Beijing Municipality & Tsinghua University</small></span><time>2026</time></li><li><span><strong>Tsinghua Agent Competition</strong><small>First prize</small></span><span class="rank-badge">3 / 118</span></li><li><span><strong>Tsinghua AI Challenge</strong><small>Second prize</small></span><span class="rank-badge">4 / 66</span></li></ul>
-<details class="minor-details"><summary>Earlier awards <span aria-hidden="true">+</span></summary><ul><li>First-Class Scholarship · Tsinghua · 2022–24</li><li>National Encouragement Scholarship · 2022–23</li><li>National College Physics Competition · First prize · 2023–24</li><li>Chinese Mathematical Olympiad · Provincial first prize · 2021–22</li><li>Automation Electronic System Design Competition · Champion · 2024</li></ul></details></div>
-<div class="service"><div class="section-label">LEADERSHIP & IMPACT</div><h2>Teaching & service.</h2><div class="service-numbers"><div><strong>200<span>+</span></strong><span>TUTORING HOURS</span></div><div><strong>240<span>+</span></strong><span>STUDENT CONSULTATIONS</span></div></div>
-<article class="service-role"><span class="service-title">Chair</span><h3>Student Science & Technology Association</h3><p>Tsinghua Automation · Technical training</p><div class="topic-tags"><span>Reinforcement learning</span><span>C++</span></div></article>
-<article class="service-role"><span class="service-title">Instructor</span><h3>Learning Development Center</h3><p>Tsinghua · Mathematics & programming</p></article><p class="small-note">MAY 2025 — MAY 2026</p></div></section>
-<section class="logbook section wrap" id="logbook"><div class="section-label"><span class="small-star">✦</span> BEYOND THE DESK</div><div class="section-heading"><h2>Beyond research.</h2><span class="handwritten" lang="zh-CN">人生是旷野，也是大海。</span></div><p class="section-intro">Conferences, travels, and moments along the way.</p><div class="gallery"><figure><a href="assets/sea.jpg" aria-label="View full photograph by the sea"><img src="assets/sea.jpg" width="1024" height="1536" alt="Boshi standing on a rocky shore with a long bridge crossing the sea" loading="lazy"></a><figcaption><span>Somewhere by the sea</span><small>A WIDER HORIZON ↗</small></figcaption></figure><figure class="gallery-wide"><a href="assets/conference.jpg" aria-label="View full EvoWorld poster photograph"><img src="assets/conference.jpg" width="1448" height="1086" alt="Boshi presenting the EvoWorld research poster at a conference" loading="lazy"></a><figcaption><span>Ideas meet the world</span><small>EVOWORLD · POSTER SESSION ↗</small></figcaption></figure><figure><a href="assets/nobel.jpg" aria-label="View full photograph beside a Nobel medal display"><img src="assets/nobel.jpg" width="1440" height="2564" alt="Boshi beside a large gold Alfred Nobel medal exhibit" loading="lazy"></a><figcaption><span>In good company</span><small>A MOMENT OF INSPIRATION ↗</small></figcaption></figure></div></section>
-<footer><div class="wrap"><div class="footer-top"><div><p class="eyebrow">THE NEXT CHAPTER</p><h2>Let’s explore<br><em>something new.</em></h2></div><a class="email-link" href="mailto:zbs22@mails.tsinghua.edu.cn">zbs22@mails.tsinghua.edu.cn ↗</a></div><div class="footer-bottom"><span>© 2026 Boshi Zhang · 张博仕</span><span>CURIOSITY · CLARITY · DISCOVERY</span><a href="#home">Back to the top ↑</a></div></div></footer>
-</main>
-</body></html>
+
+<footer class="foot">
+  <span class="meander" aria-hidden="true"></span>
+  <span>© 2026 Boshi Zhang · Beijing</span>
+  <span><a href="mailto:zbs22@mails.tsinghua.edu.cn">zbs22@mails.tsinghua.edu.cn</a> · <a href="#about">Back to top ↑</a></span>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+
+  /* theme */
+  var toggles = document.querySelectorAll('[data-theme-toggle]');
+  function isNight() { var t = root.getAttribute('data-theme'); return t ? t === 'night' : matchMedia('(prefers-color-scheme: dark)').matches; }
+  function paint() { toggles.forEach(function (b) { var n = isNight(); b.textContent = b.closest('.theme-mobile') ? (n ? '☀' : '☾') : (n ? '☀ Day' : '☾ Night'); b.setAttribute('aria-pressed', n); }); }
+  toggles.forEach(function (b) { b.addEventListener('click', function () { var next = isNight() ? 'day' : 'night'; root.setAttribute('data-theme', next); try { localStorage.setItem('voyage-theme', next); } catch (e) {} paint(); }); });
+  paint();
+
+  /* publication filter */
+  var btns = document.querySelectorAll('.filters button');
+  btns.forEach(function (b) { b.addEventListener('click', function () {
+    var f = b.dataset.filter;
+    btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    document.querySelectorAll('#publications [data-kind]').forEach(function (el) { el.hidden = f !== 'all' && el.dataset.kind !== f; });
+  }); });
+
+  /* entrance + the ship follows the section in view */
+  var cards = document.querySelectorAll('.card');
+  var links = document.querySelectorAll('.route li a');
+  var ship = document.querySelector('.ship');
+  function moveShip(id) {
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      a.setAttribute('aria-current', on);
+      if (on && ship) ship.style.transform = 'translateY(' + (a.parentElement.offsetTop - 2) + 'px)';
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var seen = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); seen.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    var spy = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) moveShip(e.target.id); }); }, { rootMargin: '-35% 0px -60% 0px' });
+    cards.forEach(function (c) { seen.observe(c); spy.observe(c); });
+  } else { cards.forEach(function (c) { c.classList.add('in'); }); }
+
+  /* photo reel: drifts on its own, pauses on hover/focus, arrows to step */
+  var track = document.querySelector('.reel__track');
+  if (track) {
+    var step = function (dir) {
+      var f = track.querySelector('figure'); var d = (f ? f.offsetWidth : 300) + 14;
+      var end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (dir > 0 && end) track.scrollTo({ left: 0 }); else if (dir < 0 && track.scrollLeft <= 4) track.scrollTo({ left: track.scrollWidth }); else track.scrollBy({ left: dir * d });
+    };
+    document.querySelectorAll('.reel__btn').forEach(function (b) { b.addEventListener('click', function () { step(+b.dataset.dir); }); });
+    var paused = false, visible = true;
+    ['mouseenter', 'focusin', 'touchstart'].forEach(function (e) { track.addEventListener(e, function () { paused = true; }, { passive: true }); });
+    ['mouseleave', 'focusout'].forEach(function (e) { track.addEventListener(e, function () { paused = false; }); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(track);
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(function () { if (!paused && visible && !document.hidden) step(1); }, 3500);
+  }
+  moveShip('about');
+})();
+</script>
+</body>
+</html>
