@@ -125,7 +125,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .about { display: grid; grid-template-columns: minmax(0, 1fr) 248px; gap: 28px; align-items: center; }
 .about p { margin: 0 0 14px; }
 .about strong { color: var(--navy); font-weight: 600; }
-.about .news { display: flex; gap: 8px; align-items: baseline; padding: 10px 14px; border-radius: var(--radius-sm); background: var(--tint); font-size: 15px; }
+.about .news { padding: 12px 16px; border-radius: var(--radius-sm); background: var(--tint); font-size: 15px; }
+.about .news h3 { margin: 0 0 8px; color: var(--navy); font-family: var(--font-head); font-size: 22px; line-height: 1.2; }
+.about .news ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.about .news li::marker { color: var(--gold-ink); }
 .about .news b { color: var(--red); font-weight: 700; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .tag { font-size: 13px; font-weight: 600; color: var(--navy); background: var(--tint); border-radius: 999px; padding: 3px 12px; }
@@ -214,7 +217,7 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
 .reel__track:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 .reel figure { flex: none; margin: 0; scroll-snap-align: start; }
 .reel a { display: block; border-radius: var(--radius-sm); overflow: hidden; background: var(--tint); }
-.reel img { display: block; height: 320px; width: auto; max-width: none; transition: transform .5s ease; }
+.reel img { display: block; height: 240px; width: auto; max-width: none; transition: transform .5s ease; }
 .reel a:hover img { transform: scale(1.03); }
 .reel figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); }
 .reel figcaption b { display: block; color: var(--navy); font-weight: 600; }
@@ -266,7 +269,7 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
   .tracks { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .laurels, .service { grid-template-columns: minmax(0, 1fr); }
   .nums { grid-template-columns: 1fr 1fr; }
-  .reel img { height: 240px; }
+  .reel img { height: 180px; }
   .contacts { grid-template-columns: minmax(0, 1fr); }
 }
 .theme-mobile { display: none !important; }
@@ -314,7 +317,14 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
         <div>
           <p>👋 Hi, I'm <strong>Boshi Zhang</strong>, a Ph.D. student in the <strong>Department of Automation, Tsinghua University</strong> 🎓, where I also earned my B.Eng. in Control Science and Engineering.</p>
           <p>🌍 My research centers on <strong>world models</strong>, which let machines imagine before they act, together with <strong>efficient generative modeling</strong> ⚡. Lately I'm most excited about <strong>agentic robotics</strong> 🦾, robots that plan, act and keep improving in the real world.</p>
-          <p class="news">📌 <span>EvoWorld at <b>ECCV 2026</b> · Frontier-Eng and AegisFlow at <b>NeurIPS 2026</b></span></p>
+          <div class="news" aria-labelledby="t-news">
+            <h3 id="t-news">News</h3>
+            <ul>
+              <li>EvoWorld at <b>ECCV 2026</b></li>
+              <li>Frontier-Eng at <b>NeurIPS 2026</b></li>
+              <li>AegisFlow at <b>NeurIPS 2026</b></li>
+            </ul>
+          </div>
           <div class="tags"><span class="tag">World models</span><span class="tag">Efficient diffusion</span><span class="tag">Agentic robotics</span></div>
         </div>
         <figure class="art"><img src="assets/ascent.svg" width="720" height="730" alt="Original blue ink illustration: a sailboat crosses the sea below a staircase rising through clouds to a Greek temple and a golden sun."></figure>
