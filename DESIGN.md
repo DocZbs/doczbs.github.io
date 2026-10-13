@@ -62,3 +62,6 @@ The current homepage uses the existing Odyssey Ink v2 layout and inline tokens i
 
 ## Writing subsite
 `/writing/` is a quiet editorial extension of the existing Odyssey Ink homepage: the same navy/gold palette, Cinzel identity, Cormorant headings and Source Sans body; no imitation of the supplied reference's handwritten masthead or tab boxes. Compact archive rows carry date and type; the reading page uses a 730px text column and desktop section contents. The local theme preference is shared with the homepage. The builder extracts the canonical inline palette from `index.html` into generated `writing/theme.css`; `writing/writing.css` owns only writing-specific layout rules. `scripts/build_writing.py` produces the archive, articles and RSS from Markdown. The Pages workflow publishes only `_site`, excludes draft articles and source files, and never invents sample posts. A starter draft is explicitly instructional.
+
+## Writing simplification
+The user rejected the oversized masthead and excess copy. The archive now uses a single “Writing.” heading, a short “Essays & notes” subtitle, a compact paper surface and one-line empty state. Remove the compass banner, slogans, repeated archive heading, entry counts and archive excerpts. Keep the established navy/gold typography and full article reading template.

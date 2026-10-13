@@ -28,9 +28,9 @@ def shell(title, description, body, route):
 <script>try{{var t=localStorage.getItem('voyage-theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 <link rel="stylesheet" href="/writing/theme.css"><link rel="stylesheet" href="/writing/writing.css"><script src="/writing/writing.js" defer></script></head>
 <body><a class="skip" href="#main">Skip to content</a>
-<header class="mast"><a class="name" href="/">Boshi Zhang<span>THE RESEARCH VOYAGE</span></a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/writing/" aria-current="{'page' if route == '/writing/' else 'false'}">Writing</a><button type="button" data-theme-toggle aria-label="Switch colour theme">Night</button></nav></header>
+<header class="mast"><a class="name" href="/">Boshi Zhang</a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/writing/" aria-current="{'page' if route == '/writing/' else 'false'}">Writing</a><button type="button" data-theme-toggle aria-label="Switch colour theme">Night</button></nav></header>
 <main id="main">{body}</main>
-<footer><span>Boshi Zhang · Notes along the way</span><div><a href="/writing/feed.xml">RSS ↗</a><a href="/">Back to home ↗</a></div></footer></body></html>'''
+<footer><span>© Boshi Zhang</span><a href="/writing/feed.xml">RSS ↗</a></footer></body></html>'''
 
 def build(out):
     out.mkdir(parents=True, exist_ok=True)
@@ -72,18 +72,18 @@ def build(out):
             if year is not None: rows+='</div>'
             year=p['date'].year
             rows+=f'<div class="year-group"><h3 class="year">{year}</h3>'
-        rows+=f'''<article class="entry"><div class="entry-meta"><time datetime="{p['date']}">{p['date']:%b %d}</time><span>{esc(p['kind'])}</span></div><div><h3><a href="/writing/{p['slug']}/">{esc(p['title'])}</a></h3><p>{esc(p['description'])}</p></div><a class="entry-arrow" href="/writing/{p['slug']}/" aria-label="Read {esc(p['title'])}">↗</a></article>'''
+        rows+=f'''<article class="entry"><div class="entry-meta"><time datetime="{p['date']}">{p['date']:%b %d}</time><span>{esc(p['kind'])}</span></div><div><h3><a href="/writing/{p['slug']}/">{esc(p['title'])}</a></h3></div><a class="entry-arrow" href="/writing/{p['slug']}/" aria-label="Read {esc(p['title'])}">↗</a></article>'''
     if year is not None: rows+='</div>'
-    if not rows: rows='''<div class="empty"><span class="empty-mark" aria-hidden="true">✧</span><div><h3>The notebook is open.</h3><p>No published entries yet. Essays, research notes, and observations will appear here.</p></div></div>'''
-    body=f'''<section class="writing-hero"><div><p class="eyebrow">WRITING · BOSHI ZHANG</p><h1>Notes from<br>the <em>voyage.</em></h1><p class="intro">Ideas in progress. Research in perspective.<br>A place to think beyond the paper.</p></div><div class="seal" aria-hidden="true"><img src="/assets/compass.svg" width="164" height="164" alt=""><span>OBSERVE · QUESTION · WRITE</span></div></section>
-<section class="archive" aria-labelledby="archive-title"><div class="archive-head"><h2 id="archive-title">The notebook</h2><span>{len(posts):02d} {'entry' if len(posts)==1 else 'entries'}</span></div>{rows}</section>'''
+    if not rows: rows='<p class="empty">Nothing published yet.</p>'
+    body=f'''<header class="writing-hero"><h1>Writing<span aria-hidden="true">.</span></h1><p>Essays &amp; notes</p></header>
+<section class="archive" aria-label="Published writing">{rows}</section>'''
     (dest/'index.html').write_text(shell('Writing','Essays, research notes and observations by Boshi Zhang.',body,'/writing/'))
     for i,p in enumerate(posts):
         route=f"/writing/{p['slug']}/"
         nextpost=posts[i+1] if i+1<len(posts) else None
         nextlink=f'<a href="/writing/{nextpost["slug"]}/">Next entry: {esc(nextpost["title"])} →</a>' if nextpost else '<a href="/writing/">All writing →</a>'
         toc=f'<aside class="contents"><p>ON THIS PAGE</p>{p["toc"]}</aside>' if p['toc'] else ''
-        body=f'''<header class="post-head"><a class="back" href="/writing/">← The notebook</a><p class="eyebrow">{esc(p['kind'])} · <time datetime="{p['date']}">{p['date']:%B %d, %Y}</time> · {p['minutes']} MIN READ</p><h1>{esc(p['title'])}</h1><p class="dek">{esc(p['description'])}</p><p class="byline">Boshi Zhang</p></header><div class="reading-grid"><article class="prose">{p['content']}<nav class="post-end" aria-label="More writing">{nextlink}</nav></article>{toc}</div>'''
+        body=f'''<header class="post-head"><a class="back" href="/writing/">← Writing</a><p class="eyebrow">{esc(p['kind'])} · <time datetime="{p['date']}">{p['date']:%B %d, %Y}</time> · {p['minutes']} MIN READ</p><h1>{esc(p['title'])}</h1><p class="dek">{esc(p['description'])}</p><p class="byline">Boshi Zhang</p></header><div class="reading-grid"><article class="prose">{p['content']}<nav class="post-end" aria-label="More writing">{nextlink}</nav></article>{toc}</div>'''
         target=dest/p['slug'];target.mkdir();(target/'index.html').write_text(shell(p['title'],p['description'],body,route))
     rss=ET.Element('rss',version='2.0');channel=ET.SubElement(rss,'channel')
     for key,value in [('title','Boshi Zhang · Writing'),('link',URL+'/writing/'),('description','Essays, research notes and observations.')]:ET.SubElement(channel,key).text=value
