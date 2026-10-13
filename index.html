@@ -154,7 +154,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; transition: transform .35s ease; }
 .thumb:hover img { transform: scale(1.03); }
 .pub-film { min-width: 0; }
-.thumb--video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: var(--ink); }
+.thumb--video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; padding: 0; border: 0; background: var(--ink); }
 .thumb--video:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .venue { margin: 0 0 4px; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--red); }
 .venue span { color: var(--muted); font-weight: 500; }
@@ -355,7 +355,7 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
 
       <article class="pub" data-kind="first">
         <div class="pub-film">
-          <video class="thumb thumb--video" autoplay muted loop playsinline preload="metadata" tabindex="0" role="button" width="1920" height="1080" poster="/EvoWorld/static/images/film-poster.jpg?v=20261013" aria-label="EvoWorld research film — click or press Space to pause or play">
+          <video class="thumb thumb--video" controls autoplay muted loop playsinline preload="metadata" controlslist="nodownload noremoteplayback" width="1920" height="1080" poster="/EvoWorld/static/images/film-poster.jpg?v=20261013" aria-label="EvoWorld research film">
             <source src="/EvoWorld/static/videos/evoworld-film.mp4?v=20261013" type="video/mp4">
             <track kind="captions" src="/EvoWorld/static/videos/film-captions.vtt?v=20261013" srclang="en" label="English">
             <a href="/EvoWorld/static/videos/evoworld-film.mp4?v=20261013">Watch the EvoWorld film</a>
@@ -372,7 +372,7 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
 
       <article class="pub" data-kind="collab">
         <div class="pub-film">
-          <video class="thumb thumb--video" autoplay muted loop playsinline preload="metadata" tabindex="0" role="button" width="1920" height="1080" poster="assets/frontier-eng-poster.jpg" aria-label="Frontier-Eng research film — click or press Space to pause or play">
+          <video class="thumb thumb--video" controls autoplay muted loop playsinline preload="metadata" controlslist="nodownload noremoteplayback" width="1920" height="1080" poster="assets/frontier-eng-poster.jpg" aria-label="Frontier-Eng research film">
             <source src="assets/frontier-eng-film.mp4" type="video/mp4">
             <track kind="captions" src="assets/frontier-eng-film-captions.vtt" srclang="en" label="English">
             <a href="assets/frontier-eng-film.mp4">Watch the Frontier-Eng film</a>
@@ -493,15 +493,6 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
     btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
     document.querySelectorAll('#publications [data-kind]').forEach(function (el) { el.hidden = f !== 'all' && el.dataset.kind !== f; el.querySelectorAll('video').forEach(function (v) { if (el.hidden) v.pause(); else if (v.autoplay) v.play().catch(function () {}); }); });
   }); });
-
-  /* Keep the film unobtrusive, with pointer and keyboard playback control. */
-  document.querySelectorAll('.thumb--video').forEach(function (v) {
-    function togglePlayback() { if (v.paused) v.play().catch(function () {}); else v.pause(); }
-    v.addEventListener('click', togglePlayback);
-    v.addEventListener('keydown', function (e) {
-      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); togglePlayback(); }
-    });
-  });
 
   /* entrance + the ship follows the section in view */
   var cards = document.querySelectorAll('.card');
