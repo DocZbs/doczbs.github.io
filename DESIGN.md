@@ -56,3 +56,6 @@ Check desktop and mobile rendering, local image and anchor resolution, links, di
 
 ## Density revision
 User requested stronger awards, less whitespace, fewer paragraphs and more motion. Honors now use two blue-and-gold highlights (National Scholarship / Kaggle silver), followed by compact award rows. Service shows two impact numbers and two role summaries. Experience is a 2×2 desktop grid. Publication titles and author credits remain complete; redundant summaries are removed.
+
+## October 2026 publication video update
+The current homepage uses the existing Odyssey Ink v2 layout and inline tokens in `index.html`; this supersedes the earlier stylesheet mapping above. EvoWorld's thumbnail is now a native, user-initiated 16:9 video with controls, a poster, English captions, and a direct film link. It reuses the published `/EvoWorld/static/videos/evoworld-film.mp4` asset (66 seconds) instead of duplicating the film. Filtering its publication out pauses playback. Other cards and theme behavior stay as established.
