@@ -156,7 +156,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .pub-film { min-width: 0; }
 .thumb--video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: var(--ink); }
 .thumb--video:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-.film-link { display: inline-block; margin-top: 6px; font-size: 12px; color: var(--muted); }
 .venue { margin: 0 0 4px; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--red); }
 .venue span { color: var(--muted); font-weight: 500; }
 .pub h3, .row h3 { margin: 0 0 6px; font-size: 17px; line-height: 1.4; font-weight: 700; color: var(--navy); }
@@ -356,12 +355,11 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
 
       <article class="pub" data-kind="first">
         <div class="pub-film">
-          <video class="thumb thumb--video" controls playsinline preload="none" width="1920" height="1080" poster="/EvoWorld/static/images/film-poster.jpg?v=20261013" aria-label="EvoWorld research film, 66 seconds, no audio">
+          <video class="thumb thumb--video" autoplay muted loop playsinline preload="metadata" tabindex="0" role="button" width="1920" height="1080" poster="/EvoWorld/static/images/film-poster.jpg?v=20261013" aria-label="EvoWorld research film — click or press Space to pause or play">
             <source src="/EvoWorld/static/videos/evoworld-film.mp4?v=20261013" type="video/mp4">
             <track kind="captions" src="/EvoWorld/static/videos/film-captions.vtt?v=20261013" srclang="en" label="English">
             <a href="/EvoWorld/static/videos/evoworld-film.mp4?v=20261013">Watch the EvoWorld film</a>
           </video>
-          <a class="film-link" href="/EvoWorld/static/videos/evoworld-film.mp4?v=20261013">Research film · 1:06 ↗</a>
         </div>
         <div>
           <p class="venue">ECCV 2026 <span>· Poster · also FMEA @ CVPR 2026</span></p>
@@ -487,8 +485,17 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
   btns.forEach(function (b) { b.addEventListener('click', function () {
     var f = b.dataset.filter;
     btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-    document.querySelectorAll('#publications [data-kind]').forEach(function (el) { el.hidden = f !== 'all' && el.dataset.kind !== f; if (el.hidden) el.querySelectorAll('video').forEach(function (v) { v.pause(); }); });
+    document.querySelectorAll('#publications [data-kind]').forEach(function (el) { el.hidden = f !== 'all' && el.dataset.kind !== f; el.querySelectorAll('video').forEach(function (v) { if (el.hidden) v.pause(); else if (v.autoplay) v.play().catch(function () {}); }); });
   }); });
+
+  /* Keep the film unobtrusive, with pointer and keyboard playback control. */
+  document.querySelectorAll('.thumb--video').forEach(function (v) {
+    function togglePlayback() { if (v.paused) v.play().catch(function () {}); else v.pause(); }
+    v.addEventListener('click', togglePlayback);
+    v.addEventListener('keydown', function (e) {
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); togglePlayback(); }
+    });
+  });
 
   /* entrance + the ship follows the section in view */
   var cards = document.querySelectorAll('.card');
