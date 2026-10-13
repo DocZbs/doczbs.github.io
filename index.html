@@ -144,9 +144,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .bubble::after { left: 28px; width: 11px; height: 8px; margin-top: -1.5px; background: var(--card); clip-path: polygon(0 0, 100% 0, 10% 100%); }
 
 /* ===== Publications ===== */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -4px 0 18px; }
-.filters button { border: 1px solid var(--line-strong); background: transparent; color: var(--muted); border-radius: 999px; padding: 4px 14px; font: 600 13px var(--font-body); cursor: pointer; }
-.filters button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--card); }
 .pub { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 24px; padding: 20px 0; border-top: 1px solid var(--line); }
 .pub:first-of-type { border-top: 0; padding-top: 4px; }
 .pub[hidden], .row[hidden] { display: none; }
@@ -347,12 +344,6 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
 
     <section class="card" id="publications" aria-labelledby="t-pubs">
       <div class="head"><span class="head__num" aria-hidden="true">Β</span><h2 id="t-pubs">Publications</h2></div>
-      <div class="filters" role="group" aria-label="Filter publications">
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
-        <button type="button" data-filter="first" aria-pressed="false">First &amp; co-first</button>
-        <button type="button" data-filter="collab" aria-pressed="false">Collaborations</button>
-      </div>
-
       <article class="pub" data-kind="collab" id="natura-1">
         <div class="pub-film">
           <video class="thumb thumb--video" controls muted loop playsinline preload="none" controlslist="nodownload noremoteplayback" width="1920" height="1080" poster="https://www.naturewill.com/_releases/739a4c8ecee211d340fe046bfb08334f918ca81ea5240778897e69a6f91ac21e/assets/natura-1/local/posters/hero-collage-20261013.png" aria-label="Natura-1 full demo from Nature Will">
@@ -500,14 +491,6 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
   function paint() { toggles.forEach(function (b) { var n = isNight(); b.textContent = b.closest('.theme-mobile') ? (n ? '☀' : '☾') : (n ? '☀ Day' : '☾ Night'); b.setAttribute('aria-pressed', n); }); }
   toggles.forEach(function (b) { b.addEventListener('click', function () { var next = isNight() ? 'day' : 'night'; root.setAttribute('data-theme', next); try { localStorage.setItem('voyage-theme', next); } catch (e) {} paint(); }); });
   paint();
-
-  /* publication filter */
-  var btns = document.querySelectorAll('.filters button');
-  btns.forEach(function (b) { b.addEventListener('click', function () {
-    var f = b.dataset.filter;
-    btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-    document.querySelectorAll('#publications [data-kind]').forEach(function (el) { el.hidden = f !== 'all' && el.dataset.kind !== f; el.querySelectorAll('video').forEach(function (v) { if (el.hidden) v.pause(); else if (v.autoplay) v.play().catch(function () {}); }); });
-  }); });
 
   /* entrance + the ship follows the section in view */
   var cards = document.querySelectorAll('.card');
