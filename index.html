@@ -371,7 +371,13 @@ details.more summary::before { content: "+ "; } details.more[open] summary::befo
 
 
       <article class="pub" data-kind="collab">
-        <a class="thumb" href="https://lab.einsia.ai/frontier-eng/" tabindex="-1" aria-hidden="true"><img src="assets/frontier.png" width="1768" height="878" alt="" loading="lazy"></a>
+        <div class="pub-film">
+          <video class="thumb thumb--video" autoplay muted loop playsinline preload="metadata" tabindex="0" role="button" width="1920" height="1080" poster="assets/frontier-eng-poster.jpg" aria-label="Frontier-Eng research film — click or press Space to pause or play">
+            <source src="assets/frontier-eng-film.mp4" type="video/mp4">
+            <track kind="captions" src="assets/frontier-eng-film-captions.vtt" srclang="en" label="English">
+            <a href="assets/frontier-eng-film.mp4">Watch the Frontier-Eng film</a>
+          </video>
+        </div>
         <div>
           <p class="venue">NeurIPS 2026 <span>· Poster</span></p>
           <h3><a href="https://arxiv.org/abs/2604.12290">Frontier-Eng: Benchmarking Self-Evolving Agents on Real-World Engineering Tasks with Generative Optimization</a></h3>

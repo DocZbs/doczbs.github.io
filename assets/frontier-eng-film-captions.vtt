@@ -1,0 +1,31 @@
+WEBVTT
+
+00:00.000 --> 00:04.200
+Pass. Fail. Real engineering asks a different question: how good can it get?
+
+00:04.200 --> 00:08.400
+Frontier-Eng: benchmarking self-evolving agents on real-world engineering tasks with generative optimization. NeurIPS 2026.
+
+00:08.400 --> 00:16.400
+Generative optimization: an agent proposes code, a frozen verifier executes it, and the agent revises from a continuous score, repeating under a fixed interaction budget.
+
+00:16.400 --> 00:24.000
+47 tasks across 5 categories, each backed by a real verifier or simulator.
+
+00:24.000 --> 00:33.000
+MallocLab: the 91-line naive allocator scores 28.15; the best program found by claude-opus-4.6 scores 84.06.
+
+00:33.000 --> 00:39.000
+Baseline to best score found by 8 frontier models, across six tasks.
+
+00:39.000 --> 00:43.600
+Improvements get rarer (frequency ∝ 1/t) and smaller (magnitude ∝ 1/k).
+
+00:43.600 --> 00:47.200
+Under a fixed budget, one deep run beats many shallow ones: 1.00, 0.99, 0.99, 0.97, 0.91 for n = 1 to 16.
+
+00:47.200 --> 00:53.200
+Medal Score leaderboard, v1: the best model reaches 0.533 of a perfect 1.00.
+
+00:53.200 --> 00:57.000
+Frontier-Eng · lab.einsia.ai/frontier-eng · arXiv 2604.12290
