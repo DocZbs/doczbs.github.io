@@ -72,7 +72,7 @@ def build(out):
             if year is not None: rows+='</div>'
             year=p['date'].year
             rows+=f'<div class="year-group"><h3 class="year">{year}</h3>'
-        rows+=f'''<article class="entry"><div class="entry-meta"><time datetime="{p['date']}">{p['date']:%b %d}</time><span>{esc(p['kind'])}</span></div><div><h3><a href="/writing/{p['slug']}/">{esc(p['title'])}</a></h3></div><a class="entry-arrow" href="/writing/{p['slug']}/" aria-label="Read {esc(p['title'])}">↗</a></article>'''
+        rows+=f'''<article class="entry"><div class="entry-meta"><time datetime="{p['date']}">{p['date']:%b %d}</time><span>{esc(p['kind'])}</span></div><div><h3><span class="entry-star" aria-hidden="true">✦</span><a href="/writing/{p['slug']}/">{esc(p['title'])}</a></h3></div><a class="entry-arrow" href="/writing/{p['slug']}/" aria-label="Read {esc(p['title'])}">↗</a></article>'''
     if year is not None: rows+='</div>'
     if not rows: rows='<p class="empty">Nothing published yet.</p>'
     body=f'''<header class="writing-hero"><h1>Writing<span aria-hidden="true">.</span></h1><p>Essays &amp; notes</p></header>
